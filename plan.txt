@@ -1,0 +1,35 @@
+about this app-> This is backend feature of of voting app where user can give vote to a candidate.
+
+voting app functionality
+1. signIn /register and login only one time by their aadhar card 
+2.see the list of candidate
+3.vote one of the candidate
+4.voter can only vote to one candidate and only one time
+5.their is a route which shows the live total no. of votes of a candidate ina sorted order
+6.there should be a admin who can add the candidate and he can't able to vote neither he can change anyhting
+7. user can change their password
+ 
+ --------------------------------------
+
+ routes
+ User Authentication:
+ /signup:Post:create a new user account.
+ /login:Post:login to an existing account. [aadhar card number+password]
+
+ voting
+ /candidates:get: get the list of candidate
+ /vote/:candidate: Post: vote for a specific candidate.
+
+vote counts
+vote/counts: get: Get the list of a candidates sorted by their vote counts
+
+User Profile: 
+/profile:Get - get the user profile information
+/profile/password: Put - Change the user's password
+
+Admin candidate Management:
+/candidate: Post- create a new candidate
+/candidate/:candidateId: Put- Update an existing candidate
+/candidate/:candidateId: Delete - Delete an candidate from list 
+
+
