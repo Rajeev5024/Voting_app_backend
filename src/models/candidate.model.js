@@ -4,10 +4,13 @@ const candidateSchema = new Schema({
 	name:{
 		type:String,
 		required:true,
+		lowercase:true,
+		trim:true,
 	}, 
 	party:{
 		type:String,
 		required:true,
+		unique:true,
 	},
 	age:{
 		type:Number,
