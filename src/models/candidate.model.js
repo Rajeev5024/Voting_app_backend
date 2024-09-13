@@ -5,7 +5,6 @@ const candidateSchema = new Schema({
 		type:String,
 		required:true,
 		lowercase:true,
-		trim:true,
 	}, 
 	party:{
 		type:String,
