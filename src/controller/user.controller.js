@@ -105,5 +105,15 @@ const loginUser =asyncHandler(async(req,res,next)=>{
 
 })
 
+const getProfile =asyncHandler(async(req,res)=>{
+		const user= req.user;
+		const userData =await User.findById(user._id).select("-password");
 
-export { registerUser, loginUser}
+		return res
+		.status(200)
+		.json(
+			new ApiResponse(200,userData, "current user fetched successfully")
+		)
+})
+
+export { registerUser, loginUser, getProfile}
