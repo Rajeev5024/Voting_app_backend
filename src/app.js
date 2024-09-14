@@ -16,7 +16,10 @@ app.use(upload.none());
 app.use(cookieParser())
 
 import userRouter from "./routes/user.routes.js"
+import candidateRouter from "./routes/candidate.routes.js"
+import { verifyJWT } from "./middlewares/auth.middleware.js"; 
 
 app.use("/api/v1/users",userRouter)
+app.use("/api/v1/candidate",verifyJWT,candidateRouter)
 
 export {app};

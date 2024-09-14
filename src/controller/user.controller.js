@@ -18,9 +18,9 @@ const generateAccessToken=async(userId)=>{
 
 const registerUser = asyncHandler(async (req,res)=>{
 
-	const { aadharNumber,mobile,address,email,age,username,password } = req.body;
+	const { aadharNumber,mobile,address,email,age,username,password,role } = req.body;
 
-	if([username,aadharNumber,address,mobile,age,password].some((field)=>!field||field.trim()==="")){
+	if([username,aadharNumber,address,mobile,age,password].some((field)=>!field || (typeof field === 'string' && field.trim() === ""))){
 		throw new ApiError(400,"all fields are required");
 	}
 
@@ -38,6 +38,7 @@ const registerUser = asyncHandler(async (req,res)=>{
 		age,
 		mobile,
 		password,
+		role
 	})
 
 	const createdUser= await User.findById(user._id)?.select("-password -aadharNumber");
