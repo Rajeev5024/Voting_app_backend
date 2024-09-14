@@ -133,4 +133,18 @@ const changeCurrentPassword = asyncHandler(async(req,res)=>{
 	)
 })
 
-export { registerUser, loginUser, getProfile, changeCurrentPassword}
+const logoutUser = asyncHandler(async(req,res)=>{
+	
+	const options={
+		httpOnly:true,
+		secure:true,
+	}
+
+	return res
+	.status(200)
+	.clearCookie("accessToken",options)
+	.json(new ApiResponse(200,{},"Logged Out Successfully"))
+})
+
+
+export { registerUser, loginUser, getProfile, changeCurrentPassword, logoutUser}
