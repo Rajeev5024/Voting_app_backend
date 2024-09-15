@@ -30,6 +30,13 @@ const registerUser = asyncHandler(async (req,res)=>{
 		throw new ApiError(409, "User with aadharNumber already existed")
 	}
 
+	if (role === 'admin'){
+		const existingAdmin = await User.findOne({ role: 'admin' });
+  		if (existingAdmin) {
+    	throw new ApiError(400, "An admin already exists. Only one admin is allowed.");
+  		}
+	}
+
 	const user = await User.create({
 		username:username.toLowerCase(),
 		aadharNumber,

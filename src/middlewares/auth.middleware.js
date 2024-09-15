@@ -27,12 +27,10 @@ export const verifyAdmin = asyncHandler(async(req,res,next)=>{
 	const userId= req.user?._id;
 	try {
 		const isAdmin = await User.findById(userId);
-		if(isAdmin.role==='admin'){
-			next();
-		}
-		else{
-			throw new ApiError(404,"User has not admin role");
-		}
+    if (!isAdmin || isAdmin.role !== 'admin') {
+      throw new ApiError(403, "You are not authorized to access this resource");
+    }
+    next();
 	} catch (error) {
 		throw new ApiError(404, error?.message || "Error while verifying admin");
 	}
