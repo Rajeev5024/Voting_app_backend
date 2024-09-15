@@ -71,6 +71,15 @@ const deleteCandidate = asyncHandler(async(req,res)=>{
 	return res.status(200).json(new ApiResponse(200,"Candidate deleted successfully"));
 })
 
+const candidatesList = asyncHandler(async(req,res)=>{
+	const candidates = await Candidate.find().select("-_id -voteCount -votes");
+	if(!candidates){
+		throw new ApiError(403, "There's no candidate till now");
+	}
+
+	return res.status(200).json(new ApiResponse(200, candidates, "List of candidates fetched successfully"))
+})
+
 const voteCandidate = asyncHandler(async (req, res) => {
 	const userId = req.user?._id;
 	const candidateId = req.params?.candidateId;
@@ -160,4 +169,4 @@ const voteCount = asyncHandler(async(req,res)=>{
 	return res.status(200).json(new ApiResponse(200,electionResult, "ElectonResult fetched successfully"));
 })
 
-export {addCandidate,updateCandidateProfile,deleteCandidate,voteCandidate, voteCount}
+export {addCandidate,updateCandidateProfile,deleteCandidate,voteCandidate, voteCount, candidatesList}
