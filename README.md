@@ -15,7 +15,6 @@ This Voting Application is designed to manage a simple voting process, where use
 - **Backend**: Express.js
 - **Authentication**: JSON Web Token (JWT)
 - **Database**: MongoDB (or any other DB you're using)
-- **Deployment**: (mention if you're deploying the app, e.g., Heroku, AWS, etc.)
 
 ## Installation & Setup
 
